@@ -8,11 +8,11 @@
         <version>3.5.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.dunn</groupId>
-    <artifactId>real-time-stream-process</artifactId>
+    <groupId>com.dunnhumby</groupId>
+    <artifactId>realtime-processor</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>real-time-stream-process</name>
+    <name>realtime-processor</name>
     <description>Real time streaming system</description>
     <url/>
     <licenses>
@@ -22,8 +22,8 @@
         <developer/>
     </developers>
     <modules>
-        <module>kinesis</module>
-        <module>real-time-processing</module>
+        <module>kinesis-producer-service</module>
+        <module>realtime-processor</module>
         <module>persistence</module>
         <module>insights-api</module>
     </modules>
