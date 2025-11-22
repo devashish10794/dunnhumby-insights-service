@@ -29,7 +29,7 @@ The `insights-api` module is a Maven submodule of the parent project `real-time-
 insights-api/
 ├── pom.xml
 └── src/
-    └── main/java/com/dunn/
+    └── main/java/com/dunnhumby/
         ├── Main.java
         ├── controller/
         │   └── AdInsightController.java
@@ -43,15 +43,15 @@ insights-api/
 
 ### 2.2 Package Responsibilities
 
-- `com.dunn.controller`
+- `com.dunnhumby.controller`
   - HTTP layer; exposes REST endpoints, handles HTTP-specific concerns.
-- `com.dunn.service`
+- `com.dunnhumby.service`
   - Core business logic; coordinates between controllers and data access.
-- `com.dunn.repository`
+- `com.dunnhumby.repository`
   - Abstraction over the real-time metrics store (ScyllaDB).
-- `com.dunn.integrators`
+- `com.dunnhumby.integrators`
   - Abstraction over the historical analytics engine (Athena).
-- `com.dunn`
+- `com.dunnhumby`
   - Entry point / configuration classes (current `Main.java` is a placeholder; a Spring Boot application class is expected here).
 
 ---
@@ -60,20 +60,20 @@ insights-api/
 
 ### 3.1 Application Entry Point (to be added)
 
-**Class:** `com.dunn.InsightsApiApplication`
+**Class:** `com.dunnhumby.InsightsApiApplication`
 
 **Stereotype:** Spring Boot application
 
 **Responsibilities:**
 
 - Bootstraps the Spring container.
-- Enables component scanning under `com.dunn`.
+- Enables component scanning under `com.dunnhumby`.
 - Acts as the main entry point when running the service.
 
 **Example implementation:**
 
 ```java
-package com.dunn;
+package com.dunnhumby;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -93,7 +93,7 @@ public class InsightsApiApplication {
 
 ### 3.2 Controller – `AdInsightController`
 
-**Location:** `com.dunn.controller.AdInsightController`
+**Location:** `com.dunnhumby.controller.AdInsightController`
 
 **Stereotype:** REST Controller (`@RestController`)
 
@@ -185,7 +185,7 @@ public ResponseEntity<Long> getClickToBasket(
 
 ### 3.3 Service – `AdInsightService`
 
-**Location:** `com.dunn.service.AdInsightService`
+**Location:** `com.dunnhumby.service.AdInsightService`
 
 **Stereotype:** Service (`@Service`)
 
@@ -261,7 +261,7 @@ private boolean isRealTime(LocalDate start, LocalDate end) {
 
 ### 3.4 Repository Interface – `ScyllaRepository`
 
-**Location:** `com.dunn.repository.ScyllaRepository`
+**Location:** `com.dunnhumby.repository.ScyllaRepository`
 
 **Stereotype:** Repository interface
 
@@ -273,7 +273,7 @@ private boolean isRealTime(LocalDate start, LocalDate end) {
 **Interface definition:**
 
 ```java
-package com.dunn.repository;
+package com.dunnhumby.repository;
 
 import java.time.LocalDate;
 
@@ -314,7 +314,7 @@ public Long getClicks(String campaignId, LocalDate start, LocalDate end) {
 
 ### 3.5 Integrator Interface – `AthenaQueryService`
 
-**Location:** `com.dunn.integrators.AthenaQueryService`
+**Location:** `com.dunnhumby.integrators.AthenaQueryService`
 
 **Stereotype:** Integrator / external system interface
 
@@ -326,11 +326,11 @@ public Long getClicks(String campaignId, LocalDate start, LocalDate end) {
 **Interface definition:**
 
 ```java
-package com.dunn.integrators;
+package com.dunnhumby.integrators;
 
 import java.time.LocalDate;
 
-public interface AthenaQueryService {
+public interface dunnhumbyQueryService {
     Long queryClicks(String campaignId, LocalDate start, LocalDate end);
 
     Long queryImpressions(String campaignId, LocalDate start, LocalDate end);
