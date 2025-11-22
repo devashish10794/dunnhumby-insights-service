@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.dunn</groupId>
-        <artifactId>real-time-stream-process</artifactId>
+        <groupId>com.dunnhumby</groupId>
+        <artifactId>realtime-processor</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
