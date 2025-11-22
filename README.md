@@ -9,7 +9,7 @@ The platform ingests **high-velocity events** (product views, add-to-cart, ad im
 - Total **impressions** per campaign
 - **Click-to-basket** counts (customers who added a product to cart after clicking an ad)
 
-The design is built around **AWS Kinesis + Flink + ScyllaDB + S3 + Athena + Spring Boot**.
+The design is built around **AWS Kinesis + Flink + ScyllaDB + Spring Boot**.
 
 ---
 
@@ -20,21 +20,21 @@ This is a **multi-module Maven project**:
 ```text
 .
 ├── pom.xml                     # Parent POM (real-time-stream-process)
-├── kinesis/                    # Kinesis client / ingestion module (skeleton)
-├── real-time-processing/       # Flink (or Kinesis Data Analytics) streaming job
-├── persistence/                # Persistence models / helpers for Scylla & Athena
+├── kinesis-producer-service/   # Kinesis client / ingestion module (skeleton)
+├── realtime-processor/         # Flink (or Kinesis Data Analytics) streaming job
+├── persistence/                # Persistence models / helpers for Scylla
 └── insights-api/               # Spring Boot REST API for ad insights
 ```
 
 Key modules:
 
-- **`kinesis`** – Event ingestion utilities or clients targeting AWS Kinesis.
-- **`real-time-processing`** – Flink/Kinesis Data Analytics streaming job that:
+- **`kinesis-producer-service`** – Event ingestion utilities or clients targeting AWS Kinesis.
+- **`realtime-processor`** – Flink/Kinesis Data Analytics streaming job that:
   - Consumes events from Kinesis
   - Performs sessionization and attribution
   - Writes real-time aggregates to ScyllaDB
   - Writes raw events to S3
-- **`persistence`** – (Conceptual) data access and schema helpers for ScyllaDB and Athena.
+- **`persistence`** – (Conceptual) data access and schema helpers for ScyllaDB.
 - **`insights-api`** – Spring Boot service implementing the ad insights APIs.
 
 ---
@@ -50,7 +50,6 @@ At a glance:
   - Aggregation (clicks, impressions, click-to-basket counts)
 - **Storage**:
   - **ScyllaDB** – real-time pre-aggregated metrics (recent window, e.g. 30 days)
-  - **S3 + Athena** – full historical data, used for long-range queries
 - **Insights API**:
   - **Spring Boot (insights-api)** – routes requests to Scylla or Athena based on time range
   - Exposes:
@@ -285,20 +284,3 @@ Trade-offs:
 - Multi-tenancy and strong isolation require careful IAM and schema design.
 
 ---
-
-## 9. How to Use This Repo in an Interview Context
-
-If you’re reviewing this as part of a technical/architect interview:
-
-- Start by skimming `HLD.md` for architectural overview.
-- Walk through the `insights-api` module:
-  - `AdInsightController`
-  - `AdInsightService`
-  - `ScyllaRepository` / `AthenaQueryService` abstractions
-- Discuss:
-  - How Kinesis → Flink → Scylla/S3 → Athena pipeline works.
-  - How you’d extend for:
-    - Multi-tenancy
-    - Additional metrics
-    - New data sources
-  - Trade-offs between real-time and historical paths.
