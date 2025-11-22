@@ -16,8 +16,6 @@
 
 - **Storage**
   - ScyllaDB cluster (self-managed or managed equivalent)
-  - S3 bucket for raw events
-  - Athena for historical querying
 
 - **API Layer**
   - Spring Boot `insights-api` service
