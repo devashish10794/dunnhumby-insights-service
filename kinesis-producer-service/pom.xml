@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.dunnhumby</groupId>
-        <artifactId>realtime-process</artifactId>
+        <artifactId>realtime-processor</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
