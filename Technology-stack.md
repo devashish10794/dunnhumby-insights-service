@@ -38,14 +38,6 @@
   - Distributed, Cassandra-compatible NoSQL database.
   - Used as a real-time metrics store for campaign insights (recent time window).
 
-- **Amazon S3**
-  - Durable, cheap storage for raw event data.
-  - Partitioned layout for efficient querying with Athena.
-
-- **Amazon Athena**
-  - Serverless query engine over data in S3.
-  - Used for historical queries and long-term analytics.
-
 ---
 
 ## 4. APIs & Documentation
@@ -120,5 +112,4 @@
 
 - **Kinesis + Flink**: Optimized for high-throughput, low-latency event processing in AWS.
 - **ScyllaDB**: High-performance, horizontally scalable NoSQL store for real-time metrics.
-- **S3 + Athena**: Cost-efficient, serverless analytics for large historical datasets.
 - **Spring Boot + Springdoc**: Rapid API development with strong ecosystem and automatic documentation.
