@@ -76,14 +76,6 @@
   - Used exclusively for:
     - Recent time window (e.g., last 30 days) aggregated metrics.
 
-- **S3 + Athena**
-  - S3 bucket for raw events:
-    - Partitioned by `tenant_id` and `date`.
-  - Athena database and tables:
-    - External tables on S3 locations.
-    - Used for:
-      - Historical queries.
-      - Long-range aggregates.
 
 ---
 
@@ -154,7 +146,6 @@
   - Blue/green or canary deployments for API and Flink.
   - Backup strategies:
     - ScyllaDB snapshots.
-    - S3 is inherently durable.
 
 ---
 
