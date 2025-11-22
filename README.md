@@ -273,8 +273,6 @@ Recommended stack:
   - Managed, scalable streaming ingestion and processing on AWS.
 - **ScyllaDB** for real-time store:
   - High throughput, low latency, easy horizontal scaling.
-- **S3 + Athena** for history:
-  - Very cost-effective, serverless analytics for large datasets.
 - **Spring Boot** for API:
   - Mature ecosystem, fast development of REST APIs, strong integration with docs and testing.
 
